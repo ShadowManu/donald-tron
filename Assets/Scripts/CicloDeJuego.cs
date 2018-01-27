@@ -20,8 +20,22 @@ public class CicloDeJuego : MonoBehaviour {
             RestablecerJuego();
 	}
 	
-	// Update is called once per frame
-	void Update () {
+    void OnEnable()
+    {
+        EventManager.OnCollisionAction += ejemplo;
+    }
+
+    void OnDisable()
+    {
+        EventManager.OnCollisionAction -= ejemplo;
+    }
+
+    void ejemplo(Collision collision, GameObject target)
+    {
+        Debug.Log(collision);
+    }
+    // Update is called once per frame
+    void Update () {
             if (Pausa){
             //Evitar que los jugadores se muevan
                 
