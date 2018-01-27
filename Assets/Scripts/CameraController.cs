@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 	public Transform player;
-	public Vector3 offset;
 
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
+	public Vector3 rotationOffset;
+
+	public float fallbackMultiplier;
+	public Vector3 positionOffset;
+
 	void Update () {
-		transform.position = player.position + offset;
+		var playerRotation = player.rotation.eulerAngles;
+
+		// Rotation
+		transform.rotation = Quaternion.Euler(playerRotation + rotationOffset);
+
+		// Position
+		transform.position = player.position + player.forward * (-fallbackMultiplier) + positionOffset;
 	}
 }

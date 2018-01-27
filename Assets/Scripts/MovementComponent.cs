@@ -11,12 +11,11 @@ public class MovementComponent : MonoBehaviour {
 	}
 	
 	void Update () {
-		// Forward movement
-		var direction = transform.forward * speed;
-		transform.Translate(direction);
-
 		// Lateral movement
     float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
 		transform.Rotate(0, rotation, 0);
+
+		// Forward movement
+		transform.position += transform.forward * Time.deltaTime * speed;
 	}
 }
