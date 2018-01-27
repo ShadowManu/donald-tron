@@ -5,18 +5,18 @@ using UnityEngine;
 public class MovementComponent : MonoBehaviour {
 	public float speed;
   public float rotationSpeed;
+	public string axisSuffix;
 
 	// Use this for initialization
 	void Start () {
 	}
 	
 	void Update () {
-		// Forward movement
-		var direction = transform.forward * speed;
-		transform.Translate(direction);
-
 		// Lateral movement
-    float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
+    float rotation = Input.GetAxis("Horizontal" + " " + axisSuffix) * rotationSpeed;
 		transform.Rotate(0, rotation, 0);
+
+		// Forward movement
+		transform.position += transform.forward * Time.deltaTime * speed;
 	}
 }
