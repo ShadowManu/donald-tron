@@ -35,12 +35,6 @@ public class ColliderComponent : MonoBehaviour {
   }
 
   void OnCollisionEnter(Collision collision) {
-    // TODO COMPLETE
-    Debug.Log("Collision!");
-  }
-
-  void OnTriggerEnter(Collider collision) {
-    // TODO COMPLETE
-    Debug.Log("Trigger!");
+    EventManager.CallOnCollisionAction(collision);
   }
 }
