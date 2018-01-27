@@ -19,13 +19,21 @@ public class WorldMatrix : MonoBehaviour {
     }
 
     public int bikeWidth = 3;
+    public int numeroArbitrario = 1;
+    public GameObject[] players = new GameObject[4];
     MatrixObject[,] matrix;
 
     // Use this for initialization
     void Start() {
+
+        Renderer renderer = GetComponent<Renderer>();
+
+        float heightOriginal = renderer.bounds.size.z;
+        float widthOriginal = renderer.bounds.size.x;
+
         //Se considera que el tamaño de la pantalla no se modifica durante la corrida
-        int height = Screen.height;
-        int width = Screen.width;
+        int height = (int) heightOriginal * numeroArbitrario;
+        int width = (int) widthOriginal * numeroArbitrario;
         matrix = new MatrixObject[height, width];
         //Inicializacion de objetos vacíos
         for (int i = 0; i < height; i++)
@@ -37,6 +45,15 @@ public class WorldMatrix : MonoBehaviour {
         }
 	}
 	
+    void Update()
+    {
+        for(int i = 0; i < players.Length; i++)
+        {
+            var oldPosition = players[i].GetComponent<MovementComponent>().oldPosition;
+            colorear( (int) players[i].transform.position.x, (int) players[i].transform.position.z, i+1, (int) oldPosition.x, (int) oldPosition.z);
+        }
+    }
+
     //TODO falta verificacion de bordes
     //Verifica colisión en un cuadrado basado en el punto actual y el último punto
     //True: chocó, False: no chocó
