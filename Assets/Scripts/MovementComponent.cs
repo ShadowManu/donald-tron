@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovementComponent : MonoBehaviour {
 	public float speed;
   public float rotationSpeed;
+	public string axisSuffix;
 
 	// Use this for initialization
 	void Start () {
@@ -12,7 +13,7 @@ public class MovementComponent : MonoBehaviour {
 	
 	void Update () {
 		// Lateral movement
-    float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
+    float rotation = Input.GetAxis("Horizontal" + " " + axisSuffix) * rotationSpeed;
 		transform.Rotate(0, rotation, 0);
 
 		// Forward movement
