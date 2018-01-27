@@ -113,6 +113,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &12551328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 12551330}
+  - component: {fileID: 12551331}
+  - component: {fileID: 12551329}
+  m_Layer: 0
+  m_Name: ColliderCollector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &12551329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 12551328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7943f977d09041340ada074b9f93c943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HEIGHT: 10
+  target: {fileID: 0}
+--- !u!4 &12551330
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 12551328}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -19.375225, y: -24.952778, z: 116.25079}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &12551331
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 12551328}
+  m_Mesh: {fileID: 0}
 --- !u!1 &30594383
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,8 +192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Jugador1: {fileID: 236376290}
   Jugador2: {fileID: 571138921}
-  PosiInicialJugador1: {x: 25, y: 0.5, z: -25}
-  PosiInicialJugador2: {x: 7.15, y: 0, z: 0}
+  PosiInicialJugador1: {x: 5, y: 0.5, z: 5}
+  PosiInicialJugador2: {x: 15, y: 0, z: 5}
   RotaInicialJugador1: {x: 0, y: 0, z: 0, w: 0}
   RotaInicialJugador2: {x: 0, y: 0, z: 0, w: 0}
   movimientoJugador1: {fileID: 236376291}
@@ -174,6 +224,7 @@ GameObject:
   - component: {fileID: 236376292}
   - component: {fileID: 236376291}
   - component: {fileID: 236376296}
+  - component: {fileID: 236376297}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -195,6 +246,7 @@ MonoBehaviour:
   speed: 10
   rotationSpeed: 5
   axisSuffix: P1
+  oldPosition: {x: 0, y: 0, z: 0}
 --- !u!23 &236376292
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -348,6 +400,21 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!54 &236376297
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 236376290}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &571138921
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &571138922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,6 +448,7 @@ MonoBehaviour:
   speed: 10
   rotationSpeed: 5
   axisSuffix: P2
+  oldPosition: {x: 0, y: 0, z: 0}
 --- !u!23 &571138923
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -458,7 +526,6 @@ GameObject:
   - component: {fileID: 585837582}
   - component: {fileID: 585837581}
   - component: {fileID: 585837580}
-  - component: {fileID: 585837584}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -528,30 +595,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 585837579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25, y: 0, z: -25}
+  m_LocalPosition: {x: 25, y: 0, z: 25}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &585837584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 585837579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9da31d5b95569a8459eb856b41a9d704, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bikeWidth: 3
-  numeroArbitrario: 200
-  players:
-  - {fileID: 236376290}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1361707247
 GameObject:
   m_ObjectHideFlags: 0
