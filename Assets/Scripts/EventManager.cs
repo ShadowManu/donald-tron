@@ -19,4 +19,14 @@ public class EventManager {
     {
         OnWinnerAction(winner);
     }
+
+  
+    public delegate void OverheatAction(GameObject player);
+
+    public static event OverheatAction OnOverheatAction;
+
+    public static void CallOnOverheatAction(GameObject player)
+    {
+        OnOverheatAction(player);
+    }
 }
