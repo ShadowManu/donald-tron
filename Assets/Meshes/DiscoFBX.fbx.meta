@@ -1,54 +1,25 @@
 fileFormatVersion: 2
-guid: 21505e1cf6d4dbf4e9c06f74607e935e
+guid: 0f56f626f9c3837479815952920352a7
+timeCreated: 1517151586
+licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: Cylinder
-    100002: Cylinder_001
-    100004: Cylinder_002
-    100006: Cylinder_003
-    100008: Cylinder_004
-    100010: Cylinder_005
-    100012: //RootNode
-    100014: Sphere
+    100002: //RootNode
+    100004: Sphere
     400000: Cylinder
-    400002: Cylinder_001
-    400004: Cylinder_002
-    400006: Cylinder_003
-    400008: Cylinder_004
-    400010: Cylinder_005
-    400012: //RootNode
-    400014: Sphere
-    2100000: unnamed
-    2100002: None__TexturaPlatillo_png
-    2100004: Material
-    2100006: Material_001__TexturaPlatillo_png
-    2100008: Material_002__TexturaPlatillo_png
-    2100010: Material_002
-    2100012: Material_001
+    400002: //RootNode
+    400004: Sphere
+    2100000: Material
+    2100002: Material.001
+    2100004: Material.002
     2300000: Cylinder
-    2300002: Cylinder_001
-    2300004: Cylinder_002
-    2300006: Cylinder_003
-    2300008: Cylinder_004
-    2300010: Cylinder_005
-    2300012: Sphere
+    2300002: Sphere
     3300000: Cylinder
-    3300002: Cylinder_001
-    3300004: Cylinder_002
-    3300006: Cylinder_003
-    3300008: Cylinder_004
-    3300010: Cylinder_005
-    3300012: Sphere
+    3300002: Sphere
     4300000: Sphere
-    4300002: Cylinder_001
-    4300004: Cylinder
-    4300006: Cylinder_002
-    4300008: Cylinder_003
-    4300010: Cylinder_005
-    4300012: Cylinder_004
-    7400000: Default Take
-    9500000: //RootNode
+    4300002: Cylinder
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -104,7 +75,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -123,7 +94,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
