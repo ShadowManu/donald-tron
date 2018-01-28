@@ -17,6 +17,8 @@ public class CicloDeJuego : MonoBehaviour
     public Quaternion RotaInicialJugador2;
     public MovementComponent movimientoJugador1;
     public MovementComponent movimientoJugador2;
+    public Overheat overheatJugador1;
+    public Overheat overheatJugador2;
 
     void Start()
     {
@@ -71,18 +73,21 @@ public class CicloDeJuego : MonoBehaviour
         GameOver = false;
         Pausa = false;
     }
-    void ActivarGameOver(string winner, GameObject loser)
+    public void ActivarGameOver(string winner, GameObject loser)
     {
         movimientoJugador1.enabled = false;
         movimientoJugador2.enabled = false;
+
+        overheatJugador1.enabled = false;
+        overheatJugador2.enabled = false;
+
+        loser.transform.GetChild(0).transform.GetComponent<Animator> ().SetTrigger ("Dead");
 
         var loserRender = loser.GetComponent<MeshRenderer>();
         loserRender.enabled = false;
 
         var loserCollider = loser.GetComponent<BoxCollider>();
         loserCollider.enabled = false;
-
-		loser.transform.GetChild(0).transform.GetComponent<Animator> ().SetTrigger ("Dead");
 
         EventManager.CallOnWinnerAction(winner);
 

@@ -12,12 +12,15 @@ public class Overheat : MonoBehaviour {
     Color initialColor;
 	public Renderer rend;
 
+    public CicloDeJuego gameCycle;
+
 	// Use this for initialization
 	void Start () {
         //Inicializa las anclas
         lastAnchor = transform.position;
         secondLastAnchor = transform.position;
         initialColor = rend.material.color;
+
 	}
 	
 	// Update is called once per frame
@@ -43,7 +46,7 @@ public class Overheat : MonoBehaviour {
 
 		if (timer > overheatVal){
 			transform.GetChild (0).transform.GetComponent<Animator> ().SetTrigger ("Dead");
-			Debug.Log("Game Over"); //GAME OVER
+            gameCycle.ActivarGameOver(gameObject.name.Equals("Player1")? "Player2" : "Player1", gameObject);
 		}
         //Colocar un indicador visual para el recalentamiento del personaje
     }
