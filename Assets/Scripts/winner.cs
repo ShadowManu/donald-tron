@@ -1,22 +1,26 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class winner : MonoBehaviour {
+public class winner : MonoBehaviour
+{
 
-    void OnEnable()
-    {
-        EventManager.OnWinnerAction += OnWinner;
-    }
+  public GameObject victoryPanel;
 
-    void OnDisable()
-    {
-        EventManager.OnWinnerAction -= OnWinner;
-    }
+  void OnEnable()
+  {
+    EventManager.OnWinnerAction += OnWinner;
+  }
 
-    void OnWinner(string winner)
-    {
-        GetComponent<Text>().text = winner + " wins";
-    }
+  void OnDisable()
+  {
+    EventManager.OnWinnerAction -= OnWinner;
+  }
+
+  void OnWinner(string winner)
+  {
+    victoryPanel.SetActive(true);
+    victoryPanel.GetComponentInChildren<Text>().text = winner + " wins";
+  }
 }
