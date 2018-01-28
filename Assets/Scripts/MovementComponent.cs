@@ -19,18 +19,27 @@ public class MovementComponent : MonoBehaviour {
 
 		// Lateral movement
 		float rotation = Input.GetAxis("Horizontal" + " " + axisSuffix) * rotationSpeed;
-                Debug.Log(rotation);
 		// Lateral movement (gatillo overwrite)
                  
 		float rotationGat = Input.GetAxis("Gatillos" + " " + axisSuffix) * rotationSpeed;
-                Debug.Log(rotationGat);
                 if (rotationGat != 0){
                     rotation = -rotationGat;
                 }
 		//t.eulerAngles = new Vector3(t.eulerAngles.x, t.eulerAngles.y + 0 + rotation*5 , t.eulerAngles.z);
 		transform.Rotate(0, rotation, 0);
 
-		// Forward movement
-		transform.position += transform.forward * Time.deltaTime * speed;
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 1))
+        {
+            if (hitInfo.collider.name != "Pared")
+            {      // Forward movement
+                transform.position += transform.forward * Time.deltaTime * speed;
+            }
+        }
+        else
+        {
+            transform.position += transform.forward * Time.deltaTime * speed;
+        }
 	}
 }

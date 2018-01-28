@@ -81,7 +81,7 @@ public class CicloDeJuego : MonoBehaviour
         overheatJugador1.enabled = false;
         overheatJugador2.enabled = false;
 
-		var v = Vector3.Lerp (Camera.main.GetComponent<Transform>().position, transform.GetChild (0).transform.position, 0.9f);
+		var v = Vector3.Lerp (Camera.main.GetComponent<Transform>().position, loser.transform.GetChild(0).transform.position, 0.9f);
 		v += new Vector3(0, 0, 2);
 		Camera.main.GetComponent<Transform>().DOMove (v, 0.5f).SetEase(Ease.OutQuad);
         loser.transform.GetChild(0).transform.GetComponent<Animator> ().SetTrigger ("Dead");
