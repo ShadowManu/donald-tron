@@ -35,6 +35,9 @@ public class ColliderComponent : MonoBehaviour {
   }
 
   void OnCollisionEnter(Collision collision) {
-    EventManager.CallOnCollisionAction(collision, target.gameObject);
-  }
+        if(target.gameObject.name != collision.gameObject.name)
+        {
+            EventManager.CallOnCollisionAction(collision.gameObject, target.gameObject);
+        }
+    }
 }
