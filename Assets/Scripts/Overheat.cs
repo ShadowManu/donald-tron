@@ -10,13 +10,14 @@ public class Overheat : MonoBehaviour {
     public int maxDistance;
     public int overheatVal;
     Color initialColor;
+	public Renderer rend;
 
 	// Use this for initialization
 	void Start () {
         //Inicializa las anclas
         lastAnchor = transform.position;
         secondLastAnchor = transform.position;
-        initialColor = GetComponent<Renderer>().material.color;
+        initialColor = rend.material.color;
 	}
 	
 	// Update is called once per frame
@@ -35,11 +36,15 @@ public class Overheat : MonoBehaviour {
         }
         else timer++;
 
-        Renderer rend = GetComponent<Renderer>();
         //rend.material.color = Color.Lerp(rend.material.color, Color.red, Mathf.PingPong(timer, overheatVal));
         rend.material.color = Color.Lerp(initialColor, Color.red, ((float)timer)/overheatVal);
 
-        if (timer > overheatVal) Debug.Log("Game Over"); //GAME OVER
+
+
+		if (timer > overheatVal){
+			transform.GetChild (0).transform.GetComponent<Animator> ().SetTrigger ("Dead");
+			Debug.Log("Game Over"); //GAME OVER
+		}
         //Colocar un indicador visual para el recalentamiento del personaje
     }
 }

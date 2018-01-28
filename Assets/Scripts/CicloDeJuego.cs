@@ -82,6 +82,8 @@ public class CicloDeJuego : MonoBehaviour
         var loserCollider = loser.GetComponent<BoxCollider>();
         loserCollider.enabled = false;
 
+		loser.transform.GetChild(0).transform.GetComponent<Animator> ().SetTrigger ("Dead");
+
         EventManager.CallOnWinnerAction(winner);
 
         Debug.Log(winner);
