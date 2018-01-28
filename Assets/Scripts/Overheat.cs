@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Overheat : MonoBehaviour {
 
@@ -45,7 +46,11 @@ public class Overheat : MonoBehaviour {
 
 
 		if (timer > overheatVal){
+			var v = Vector3.Lerp (Camera.main.GetComponent<Transform>().position, transform.GetChild(0).transform.position, 0.9f);
+			v += new Vector3	 (0, 0, 2);
+			Camera.main.GetComponent<Transform>().DOMove (v, 0.5f).SetEase(Ease.OutQuad);
 			transform.GetChild (0).transform.GetComponent<Animator> ().SetTrigger ("Dead");
+
             gameCycle.ActivarGameOver(gameObject.name.Equals("Player1")? "Player2" : "Player1", gameObject);
 		}
         //Colocar un indicador visual para el recalentamiento del personaje
